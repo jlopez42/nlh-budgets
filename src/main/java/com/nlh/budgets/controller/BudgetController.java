@@ -21,6 +21,6 @@ public class BudgetController {
 
     @PostMapping("create")
     public ResponseEntity<BudgetResponse> createProject(@RequestBody BudgetRequest project){
-        return ResponseEntity.ok(service.newProject(project));
+        return ResponseEntity.ok(service.newBudget(project));
     }
 }

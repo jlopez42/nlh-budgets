@@ -15,7 +15,7 @@ public class BudgetService {
     public BudgetService(BudgetRepository repository) {
         this.repository = repository;
     }
-    public BudgetResponse newProject(BudgetRequest request){
+    public BudgetResponse newBudget(BudgetRequest request){
 
         if(repository.existsByProjectId(request.getBudget().getProjectId())){
             Budget budget = repository.save(request.getBudget());
