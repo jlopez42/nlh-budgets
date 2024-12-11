@@ -20,7 +20,7 @@ public class BudgetController {
     }
 
     @PostMapping("create")
-    public ResponseEntity<BudgetResponse> createProject(@RequestBody BudgetRequest project){
-        return ResponseEntity.ok(service.newBudget(project));
+    public ResponseEntity<BudgetResponse> createBudget(@RequestBody BudgetRequest budget){
+        return ResponseEntity.ok(service.newBudget(budget));
     }
 }

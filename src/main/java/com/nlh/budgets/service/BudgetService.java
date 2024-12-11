@@ -3,6 +3,7 @@ package com.nlh.budgets.service;
 import com.nlh.budgets.model.Budget;
 import com.nlh.budgets.payloads.request.BudgetRequest;
 import com.nlh.budgets.payloads.response.BudgetResponse;
+import com.nlh.budgets.repository.BudgetProjectRepository;
 import com.nlh.budgets.repository.BudgetRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -12,12 +13,16 @@ public class BudgetService {
     @Autowired
     private BudgetRepository repository;
 
-    public BudgetService(BudgetRepository repository) {
+    @Autowired
+    private BudgetProjectRepository budgetProjectRepository;
+
+    public BudgetService(BudgetRepository repository, BudgetProjectRepository budgetProjectRepository) {
         this.repository = repository;
+        this.budgetProjectRepository = budgetProjectRepository;
     }
     public BudgetResponse newBudget(BudgetRequest request){
 
-        if(repository.existsByProjectId(request.getBudget().getProjectId())){
+        if(budgetProjectRepository.existsByProjectId(request.getBudget().getProjectId())){
             Budget budget = repository.save(request.getBudget());
             return new BudgetResponse("Budget has associated to project successfully",
                     "201",

@@ -11,5 +11,4 @@ public interface BudgetRepository extends JpaRepository<Budget, Long> {
 
     Optional<Budget> findById(Long budgetId);
 
-    Boolean existsByProjectId(Long projectId);
 }
