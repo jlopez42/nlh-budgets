@@ -23,4 +23,29 @@ public class BudgetController {
     public ResponseEntity<BudgetResponse> createBudget(@RequestBody BudgetRequest budget){
         return ResponseEntity.ok(service.newBudget(budget));
     }
+
+    @GetMapping("list")
+    public ResponseEntity<BudgetResponse> listBudget(){
+        return ResponseEntity.ok(service.listAllBudget());
+    }
+
+    @GetMapping("/{budgetId}")
+    public ResponseEntity<BudgetResponse> getBudget(@PathVariable Long budgetId){
+        return ResponseEntity.ok(service.getBudgetById(budgetId));
+    }
+
+    @GetMapping("/project/{projectId}")
+    public ResponseEntity<BudgetResponse> listBudgetByProjectId(@PathVariable Long projectId){
+        return ResponseEntity.ok(service.listByProjectId(projectId));
+    }
+
+    @PutMapping("/{budgetId}")
+    public ResponseEntity<BudgetResponse> updateBuget(@RequestBody BudgetRequest budget, @PathVariable Long budgetId){
+        return ResponseEntity.ok(service.updatedBudget(budget, budgetId));
+    }
+
+    @RequestMapping(value="/{budgetId}", method=RequestMethod.DELETE)
+    public ResponseEntity<BudgetResponse> removeBudget(@PathVariable Long budgetId){
+        return ResponseEntity.ok(service.removeBudget(budgetId));
+    }
 }

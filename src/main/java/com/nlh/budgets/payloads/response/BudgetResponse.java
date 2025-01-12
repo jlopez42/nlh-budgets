@@ -1,35 +1,30 @@
 package com.nlh.budgets.payloads.response;
 
-import java.util.Date;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import java.util.List;
 
 public class BudgetResponse  extends MessageResponse{
-    private Long id;
-    private Date createdAt;
+    @JsonInclude(JsonInclude.Include.NON_NULL)
+    private List<Budgets> projectList;
 
     public BudgetResponse(String message, String code) {
         super(message, code);
     }
 
-    public BudgetResponse(String message, String code, Long id, Date createdAt) {
+    public BudgetResponse(String message, String code, List<Budgets> projectList) {
         super(message, code);
-        this.id = id;
-        this.createdAt = createdAt;
+        this.projectList = projectList;
     }
 
-    public Long getId() {
-        return id;
+    public BudgetResponse() {
+        super();
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public List<Budgets> getProjectList() {
+        return projectList;
     }
 
-
-    public Date getCreatedAt() {
-        return createdAt;
-    }
-
-    public void setCreatedAt(Date createdAt) {
-        this.createdAt = createdAt;
+    public void setProjectList(List<Budgets> projectList) {
+        this.projectList = projectList;
     }
 }
